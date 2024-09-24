@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Employee</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .form-container { width: 500px; margin: 0 auto; padding: 20px; }
+        input, select, button { width: 100%; padding: 10px; margin: 10px 0; }
+        label { font-weight: bold; display: block; margin-top: 10px; }
+        .inline { display: inline-block; vertical-align: middle; }
+        .form-group { margin-bottom: 15px; }
+
+        /* Flex for horizontal alignment */
+        .horizontal-group {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Remove boldness for radio and checkbox labels */
+        .horizontal-group label.inline {
+            font-weight: normal;
+        }
+
+        .horizontal-group label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Create Employee</h2>
+        <form id="createEmployeeForm" onsubmit="return validateEmployee()">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">Mobile No:</label>
+                <input type="text" id="mobile" placeholder="Enter Mobile No" required>
+            </div>
+
+            <div class="form-group">
+                <label for="designation">Designation:</label>
+                <select id="designation" required>
+                    <option value="">Select Designation</option>
+                    <option value="HR">HR</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Manager">Manager</option>
+                </select>
+            </div>
+
+            <div class="form-group horizontal-group">
+                <label for="gender">Gender:</label>
+                <label class="inline"><input type="radio" id="male" name="gender" value="Male" required> Male</label>
+                <label class="inline"><input type="radio" id="female" name="gender" value="Female" required> Female</label>
+            </div>
+
+            <div class="form-group horizontal-group">
+                <label for="course">Course:</label>
+                <label class="inline"><input type="checkbox" id="mca" name="course" value="MCA"> MCA</label>
+                <label class="inline"><input type="checkbox" id="bca" name="course" value="BCA"> BCA</label>
+                <label class="inline"><input type="checkbox" id="bsc" name="course" value="BSC"> BSC</label>
+            </div>
+
+            <div class="form-group">
+                <label for="imageUpload">Image Upload:</label>
+                <input type="file" id="imageUpload" accept="image/*" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateEmployee() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+            if (name === "" || email === "" || mobile === "") {
+                alert("All fields are required!");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
